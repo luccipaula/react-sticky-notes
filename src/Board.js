@@ -69,8 +69,13 @@ class Board extends Component {
     }
 
     nextId() {
-        this.uniqueId = this.uniqueId || 0
-        return this.uniqueId++
+        //Updates more than one note by accident
+        //this.uniqueId = this.uniqueId || 0
+        //return this.uniqueId++
+
+        var mapping = this.state.notes.map(note => parseInt(note.id))
+        var max = Math.max(...mapping)
+        return max + 1
     }
 
     update(newText, i) {
